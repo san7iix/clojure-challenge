@@ -1,4 +1,5 @@
-(ns invoice-item)
+(ns invoice-item
+  )
 
 (defn- discount-factor [{:invoice-item/keys [discount-rate]
                          :or                {discount-rate 0}}]

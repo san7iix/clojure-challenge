@@ -1,6 +1,8 @@
-(ns invoice-spec
+(ns clojure-challenge.invoice-spec
   (:require
     [clojure.spec.alpha :as s]))
+
+(require '[clojure.data.json :as json])
 
 (defn not-blank? [value] (-> value clojure.string/blank? not))
 (defn non-empty-string? [x] (and (string? x) (not-blank? x)))
@@ -33,3 +35,11 @@
   (s/keys :req [:invoice/issue-date
                 :invoice/customer
                 :invoice/items]))
+
+(defn check-json
+  "This function receives a filename, reads the JSON file and verify if it is valid, if it is valid, it returns true, otherwise it returns false"
+  [filename]
+  (let [json_invoice (json/read-str (slurp filename))]
+    (if (s/valid? ::invoice json_invoice)
+      true
+      false)))
