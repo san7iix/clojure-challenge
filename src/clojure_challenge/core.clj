@@ -2,8 +2,9 @@
 
 (def invoice (clojure.edn/read-string (slurp "src/invoice.edn")))
 
+(defn filter-items-by-iva-or-retention
 "This function receives an invoice and return the items what satisfaces some of the two conditions"
-(defn filter-items-by-iva-or-retention [invoice]
+  [invoice]
   (->> invoice
        :invoice/items
        (filter (fn [item]
