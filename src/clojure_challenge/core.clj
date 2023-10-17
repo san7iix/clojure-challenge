@@ -9,6 +9,7 @@
 
 (defn -main
   [& args]
-  (println (clojure-challenge.invoice-spec/check-json "src/invoice.json"))
+  (println "Problem 1: " filtered-items)
+  (println "Problem 2:" (clojure-challenge.invoice-spec/check-json "src/invoice.json"))
   )
 
